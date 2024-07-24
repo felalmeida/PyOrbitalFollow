@@ -1,0 +1,137 @@
+{
+    "EarthST_001": {
+        "Id":           "EarthST_001",
+        "Name":         "Earth Station 001",
+        "Enabled":      true,
+        "Location":     "GrupoCriar_Industrial",
+        "MinDegree":    10,
+        "Radios":       [
+            {
+                "Id":           "EarthST_001|Radio_001",
+                "Name":         "Radio_001",
+                "Enabled":      true,
+                "Modulation":   "QPSK",
+                "Antennas":     [
+                    {
+                        "Id":           "EarthST_001|Radio_001|Antenna_001",
+                        "Name":         "Antenna_001",
+                        "Enabled":      true,
+                        "Type":         "VHF",
+                        "Operation":    "Downlink",
+                        "Frequency":    0.0,
+                        "Gain":         0.0,
+                        "Filter":       false,
+                        "Polarization": "V",
+                        "Diameter":     3.0,
+                        "Efficiency":   0.6,
+                        "Losses":       0.0
+                    },
+                    {
+                        "Id":           "EarthST_001|Radio_001|Antenna_002",
+                        "Name":         "Antenna_002",
+                        "Enabled":      true,
+                        "Type":         "UHF",
+                        "Operation":    "UpLink",
+                        "Frequency":    0.0,
+                        "Gain":         0.0,
+                        "Filter":       false,
+                        "Polarization": "V",
+                        "Diameter":     3.0,
+                        "Efficiency":   0.6,
+                        "Losses":       0.0
+                    }
+                ]
+            }
+        ]
+    },
+    "EarthST_002": {
+        "Id":           "EarthST_002",
+        "Name":         "Earth Station 002",
+        "Enabled":      true,
+        "Location":     "GrupoCriar_Administrativo",
+        "MinDegree":    10,
+        "Radios":       [
+            {
+                "Id":           "EarthST_002|Radio_001",
+                "Name":         "Radio_001",
+                "Enabled":      true,
+                "Modulation":   "QPSK",
+                "Antennas":     [
+                    {
+                        "Id":           "EarthST_002|Radio_001|Antenna_001",
+                        "Name":         "Antenna_001",
+                        "Enabled":      true,
+                        "Type":         "VHF",
+                        "Operation":    "Downlink",
+                        "Frequency":    0.0,
+                        "Gain":         0.0,
+                        "Filter":       false,
+                        "Polarization": "V",
+                        "Diameter":     3.0,
+                        "Efficiency":   0.6,
+                        "Losses":       0.0
+                    },
+                    {
+                        "Id":           "EarthST_002|Radio_001|Antenna_002",
+                        "Name":         "Antenna_002",
+                        "Enabled":      true,
+                        "Type":         "UHF",
+                        "Operation":    "UpLink",
+                        "Frequency":    0.0,
+                        "Gain":         0.0,
+                        "Filter":       false,
+                        "Polarization": "V",
+                        "Diameter":     3.0,
+                        "Efficiency":   0.6,
+                        "Losses":       0.0
+                    }
+                ]
+            }
+        ]
+    },
+    "EarthST_003": {
+        "Id":           "EarthST_003",
+        "Name":         "Edson Pereira Station",
+        "Enabled":      true,
+        "Location":     "GrupoCriar_EdsonPereira",
+        "MinDegree":    10,
+        "Radios":       [
+            {
+                "Id":           "EarthST_003|Radio_001",
+                "Name":         "Radio_001",
+                "Enabled":      true,
+                "Modulation":   "QPSK",
+                "Antennas":     [
+                    {
+                        "Id":           "EarthST_003|Radio_001|Antenna_001",
+                        "Name":         "Antenna_001",
+                        "Enabled":      true,
+                        "Type":         "VHF",
+                        "Operation":    "Downlink",
+                        "Frequency":    0.0,
+                        "Gain":         0.0,
+                        "Filter":       false,
+                        "Polarization": "V",
+                        "Diameter":     3.0,
+                        "Efficiency":   0.6,
+                        "Losses":       0.0
+                    },
+                    {
+                        "Id":           "EarthST_003|Radio_001|Antenna_002",
+                        "Name":         "Antenna_002",
+                        "Enabled":      true,
+                        "Type":         "UHF",
+                        "Operation":    "UpLink",
+                        "Frequency":    0.0,
+                        "Gain":         0.0,
+                        "Filter":       false,
+                        "Polarization": "V",
+                        "Diameter":     3.0,
+                        "Efficiency":   0.6,
+                        "Losses":       0.0
+                    }
+                ]
+            }
+        ]
+    }
+}

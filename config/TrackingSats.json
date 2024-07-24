@@ -1,0 +1,42 @@
+[
+    {
+        "Enabled": true,
+        "NORADCatalogNumber": 25544,
+        "TrackingStepMS": 100,
+        "WindowJumpSec": 3600,
+        "SatName": "ISS (ZARYA)",
+        "EarthStation": "EarthST_001",
+        "Output_CSV": true,
+        "Output_JSON": false
+    },
+    {
+        "Enabled": false,
+        "NORADCatalogNumber": 25544,
+        "TrackingStepMS": 100,
+        "WindowJumpSec": 3600,
+        "SatName": "ISS (ZARYA)",
+        "EarthStation": "EarthST_002",
+        "Output_CSV": false,
+        "Output_JSON": false
+    },
+    {
+        "Enabled": false,
+        "NORADCatalogNumber": 57167,
+        "TrackingStepMS": 100,
+        "WindowJumpSec": 3600,
+        "SatName": "STRATOSAT-TK 1 (RS52S)",
+        "EarthStation": "EarthST_003",
+        "Output_CSV": true,
+        "Output_JSON": false
+    },
+    {
+        "Enabled": false,
+        "NORADCatalogNumber": 60209,
+        "TrackingStepMS": 100,
+        "WindowJumpSec": 3600,
+        "SatName": "MESAT1",
+        "EarthStation": "EarthST_003",
+        "Output_CSV": true,
+        "Output_JSON": false
+    }
+]

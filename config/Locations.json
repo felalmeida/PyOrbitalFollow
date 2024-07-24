@@ -1,0 +1,38 @@
+{
+    "GrupoCriar_Industrial": {
+        "Id":           "GrupoCriar_Industrial",
+        "Name":         "Grupo CRIAR - Industrial",
+        "Enabled":      true,
+        "City":         "Ribeirão Preto",
+        "State":        "SP",
+        "Country":      "Brazil",
+        "TimeZone":     "America/Sao_Paulo",
+        "Latitude":     -21.09487,
+        "Longitude":    -47.79990,
+        "Altitude":     545
+    },
+    "GrupoCriar_Administrativo": {
+        "Id":           "GrupoCriar_Administrativo",
+        "Name":         "Grupo CRIAR - Administrativo",
+        "Enabled":      true,
+        "City":         "Ribeirão Preto",
+        "State":        "SP",
+        "Country":      "Brazil",
+        "TimeZone":     "America/Sao_Paulo",
+        "Latitude":     -21.1749513,
+        "Longitude":    -47.7990129,
+        "Altitude":     545
+    },
+    "GrupoCriar_EdsonPereira": {
+        "Id":           "GrupoCriar_EdsonPereira",
+        "Name":         "Grupo CRIAR - Edson Pereira",
+        "Enabled":      true,
+        "City":         "Pardinho",
+        "State":        "SP",
+        "Country":      "Brazil",
+        "TimeZone":     "America/Sao_Paulo",
+        "Latitude":     -23.106410,
+        "Longitude":    -48.379153,
+        "Altitude":     996
+    }
+}

@@ -2,7 +2,7 @@
 # -*- coding: UTF-8 -*-
 ###############################################################################
 # Module:   PyOrbitalFollow.py      Autor: Felipe Almeida                     #
-# Start:    18-Jul-2024             LastUpdate: 23-Jul-2024     Version: 1.0  #
+# Start:    18-Jul-2024             LastUpdate: 16-Ago-2024     Version: 1.0  #
 ###############################################################################
 
 import sys
@@ -47,7 +47,7 @@ with open(ConfigPath+'TrackingSats.json', 'r') as fTrackingSources:
 
 def fixstr(v_Str):
     ReturnStr = v_Str
-    ReturnStr = ReturnStr.strip().encode('utf-8',errors='ignore')
+    ReturnStr = ReturnStr.strip().encode('utf-8', errors='ignore')
     ReturnStr = ReturnStr.decode('utf-8').replace(' ','_')
     ReturnStr = ReturnStr.replace('(','').replace(')','')
     return ReturnStr
@@ -215,12 +215,13 @@ def ParseTLEs(v_TLEData):
     ObjCount = 0
     for Line in v_TLEData.splitlines():
         TleLine = Line.strip()
+        QtyFields = len(TleLine.split())
         if len(TleLine) == 0:
             continue
-        if (TleLine[0].isdigit()):
+        if (QtyFields >= 8):
             jSatData['Line_'+TleLine[0].zfill(2)] = TleLine
         else:
-            if ((not TleLine[0].isdigit()) and (SatName is not None)):
+            if (SatName is not None):
                 jTleData[SatId] = jSatData.copy()
             ObjCount += 1
             SatId = TleLine+' '+str(ObjCount).zfill(5)
@@ -435,7 +436,7 @@ def CalcPassages(v_SatelliteData=None, v_LocationData=None, v_dtRefDateTime=date
     TimeZone        = pytz.timezone(v_LocationData['TimeZone'])
     LocDiff         = EarthSat - Location
   # MaxIterations   = round((dtTimeEnd - dtTimeStart).total_seconds() * 1000 / MiliSecStep)
-    print('Calculating For "'+v_LocationData['Name']+'" "'+TleData['Name']+'"; Date '+v_dtRefDateTime.isoformat()+'; Step '+str(MiliSecStep)+'ms')
+    print('Calculating For "'+v_LocationData['Name']+'" "'+v_SatelliteData['TleName']+'" "'+TleData['Name']+'"; Date '+v_dtRefDateTime.isoformat()+'; Step '+str(MiliSecStep)+'ms')
 
     dtTimeLoop      = dtTimeStart
     LoopStep        = datetime.timedelta(milliseconds=MiliSecStep)
@@ -615,18 +616,16 @@ def MainProcess():
                                         # Deslocated Windows
                                         if ((jWindowStart == iWindowStart) or (jWindowEnd == iWindowEnd)):
                                             Conflict = True
-                                        elif (jWindowStart < iWindowStart and jWindowEnd < iWindowStart): # Start and End Before
+                                        elif (jWindowStart < iWindowStart and jWindowEnd < iWindowStart):   # Start and End Before
                                             Conflict = False
-                                        elif (jWindowStart > iWindowEnd and jWindowEnd > iWindowEnd):   # Start and End After
+                                        elif (jWindowStart > iWindowEnd and jWindowEnd > iWindowEnd):       # Start and End After
                                             Conflict = False
-                                        elif (jWindowStart > iWindowStart and jWindowEnd < iWindowEnd): # Full Overlap
+                                        elif (jWindowStart > iWindowStart and jWindowEnd < iWindowEnd):     # Full Overlap
                                             Conflict = True
                                         elif (jWindowStart < iWindowStart and jWindowEnd > iWindowStart and jWindowEnd < iWindowEnd): # Start Overlap
                                             Conflict = True
                                         elif (jWindowStart > iWindowStart and jWindowStart < iWindowEnd and jWindowEnd > iWindowEnd): # End Overlap
                                             Conflict = True
-                                        else:
-                                            Conflict = False
 
                                         if (Conflict):
                                             StConflicts.append({
@@ -661,7 +660,7 @@ def MainProcess():
                         StConflictsClean.append(OriginalItem)
                 StConflictsClean.sort(key=lambda DictItem:(DictItem['dtDate'],DictItem['TleHash'],DictItem['WindowId']))
 
-                with open(os.path.realpath(ConflictsBaseName+'.meta'),'w') as fCsvConflicts:
+                with open(os.path.realpath(ConflictsBaseName+'.csv'),'w') as fCsvConflicts:
                     fCsvConflicts.write(DictArrayToCsv(StConflictsClean,FieldDelim))
 
                 if (StationSat['SatTrackingConfig']['Output_JSON']):
@@ -680,3 +679,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

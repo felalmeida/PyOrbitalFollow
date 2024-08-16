@@ -6,7 +6,8 @@
         "WindowJumpSec": 3600,
         "SatName": "ISS (ZARYA)",
         "EarthStation": "EarthST_001",
-        "Output_CSV": true,
+        "Priority": 10,
+        "Output_CSV": false,
         "Output_JSON": false
     },
     {
@@ -16,6 +17,7 @@
         "WindowJumpSec": 3600,
         "SatName": "ISS (ZARYA)",
         "EarthStation": "EarthST_002",
+        "Priority": 10,
         "Output_CSV": false,
         "Output_JSON": false
     },
@@ -26,6 +28,7 @@
         "WindowJumpSec": 3600,
         "SatName": "STRATOSAT-TK 1 (RS52S)",
         "EarthStation": "EarthST_003",
+        "Priority": 10,
         "Output_CSV": true,
         "Output_JSON": false
     },
@@ -36,6 +39,7 @@
         "WindowJumpSec": 3600,
         "SatName": "MESAT1",
         "EarthStation": "EarthST_003",
+        "Priority": 20,
         "Output_CSV": true,
         "Output_JSON": false
     }

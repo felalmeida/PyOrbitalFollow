@@ -195,6 +195,7 @@ def GetJE9PELWebsite():
     WebContent = WebContent.replace('<span style="background-color:#ccffcc;">','')
     WebContent = WebContent.replace('<span style="background-color:#dcdcdc;">','')
     WebContent = WebContent.replace('<span style="background-color:#c0c0c0;">','')
+    WebContent = WebContent.replace('<span style="background-color:#dcdcdc">','')
     WebContent = WebContent.replace('</span>','')
     WebContent = WebContent.replace('<font color="#ff0000">','')
     WebContent = WebContent.replace('<font color="#ff4500">','')

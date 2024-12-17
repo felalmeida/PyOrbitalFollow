@@ -24,6 +24,12 @@ FieldDelim  = ';'
 if not os.path.exists(TlePath):  os.makedirs(TlePath)
 if not os.path.exists(DataPath): os.makedirs(DataPath)
 
+for root, dirs, files in os.walk(DataPath):
+    for f in files:
+        os.unlink(os.path.join(root, f))
+    for d in dirs:
+        shutil.rmtree(os.path.join(root, d))
+
 with open(ConfigPath+'Locations.json', 'r') as fFileLocations:
     jLocations = json.load(fFileLocations)
 jLocations = {key:val for key,val in jLocations.items() if val['Enabled'] == True}
@@ -250,7 +256,7 @@ def GetTLEs():
             Error = False
             if os.path.exists(TleFileName):
                 TleFileStat = os.stat(TleFileName)
-                if (time.time() < TleFileStat.st_mtime+TleSource['TTL']):
+                if (time.time() < TleFileStat.st_mtime + TleSource['TTL']):
                     DownloadFile = False
                     TleFileContent = open(TleFileName).read()
                     if (('404 - File Not Found' in TleFileContent) or ('Invalid query' in TleFileContent)):
@@ -420,10 +426,11 @@ def PrepareData(v_SaveFiles=False):
     return SatMapConfigActiveArray
 
 
-def CalcPassages(v_SatelliteData=None, v_LocationData=None, v_dtRefDateTime=datetime.datetime.now().date()):
+def CalcPassages(v_SatelliteData=None, v_StationData=None, v_dtRefDateTime=datetime.datetime.now().date()):
     TleData         = v_SatelliteData['SatData']
     MiliSecStep     = v_SatelliteData['SatTrackingConfig']['TrackingStepMS']
     SecJumpStep     = v_SatelliteData['SatTrackingConfig']['WindowJumpSec']
+    LocationData    = v_StationData['LocationData']
 
     dtStart         = v_dtRefDateTime
     dtTimeStart     = datetime.datetime(dtStart.year,dtStart.month,dtStart.day,0,0,0)
@@ -433,11 +440,11 @@ def CalcPassages(v_SatelliteData=None, v_LocationData=None, v_dtRefDateTime=date
     SatPOSMetadata  = []
 
     EarthSat        = skyfield.api.EarthSatellite(TleData['Line_01'],TleData['Line_02'],TleData['Name'],dtTimeScale)
-    Location        = skyfield.api.wgs84.latlon(v_LocationData['Latitude'],v_LocationData['Longitude'],v_LocationData['Altitude'])
-    TimeZone        = pytz.timezone(v_LocationData['TimeZone'])
+    Location        = skyfield.api.wgs84.latlon(LocationData['Latitude'],LocationData['Longitude'],LocationData['Altitude'])
+    TimeZone        = pytz.timezone(LocationData['TimeZone'])
     LocDiff         = EarthSat - Location
   # MaxIterations   = round((dtTimeEnd - dtTimeStart).total_seconds() * 1000 / MiliSecStep)
-    print('Calculating For "'+v_LocationData['Name']+'" "'+v_SatelliteData['TleName']+'" "'+TleData['Name']+'"; Date '+v_dtRefDateTime.isoformat()+'; Step '+str(MiliSecStep)+'ms')
+    print('Calculating For "'+LocationData['Name']+'" "'+v_SatelliteData['TleName']+'" "'+TleData['Name']+'"; Date '+v_dtRefDateTime.isoformat()+'; Step '+str(MiliSecStep)+'ms; MinDegree '+str(v_StationData['MinDegree']))
 
     dtTimeLoop      = dtTimeStart
     LoopStep        = datetime.timedelta(milliseconds=MiliSecStep)
@@ -478,13 +485,13 @@ def CalcPassages(v_SatelliteData=None, v_LocationData=None, v_dtRefDateTime=date
                 WindowEnd       = dtThisLoop - datetime.timedelta(milliseconds=MiliSecStep)
                 jPositionMetaData = {
                     'dtPassageDate':    v_dtRefDateTime.isoformat(),
-                    'StationId':        v_LocationData['Id'],
+                    'StationId':        LocationData['Id'],
                     'TleName':          v_SatelliteData['TleName'],
                     'SatName':          v_SatelliteData['SatName'],
                     'SatNum':           v_SatelliteData['SatNum'],
                     'TleHash':          v_SatelliteData['SatHash'],
                     'WindowId':         WindowId,
-                    'WindowPassages':   WindowSequence,
+                    'WindowSteps':      WindowSequence,
                     'WindowStart':      WindowStart.isoformat(timespec='microseconds'),
                     'WindowEnd':        WindowEnd.isoformat(timespec='microseconds'),
                     'SatApexDegree':    SatApexDegree,
@@ -572,13 +579,13 @@ def MainProcess():
                 JE9PELData  = StationSat['JE9PEL'] if StationSat['HasJE9PEL'] else None
 
                 StFollows[StationSat['SatHash']] = {}
-                dtLoopDate  = dtLoopStart
+                dtLoopDate = dtLoopStart
                 while dtLoopDate <= dtLoopEnd:
                     dtRefDateTime = dtLoopDate
                     dtStrDateTime = dtRefDateTime.strftime('%Y%m%d')
 
                     BaseName    = DataPath+'POS_'+dtStrDateTime+'_'+fixstr(Station['Name'])+'_'+fixstr(StationSat['SatName'])+'_'+StationSat['SatHash']
-                    SatPassages = CalcPassages(v_SatelliteData=StationSat,v_LocationData=StLocation,v_dtRefDateTime=dtRefDateTime)
+                    SatPassages = CalcPassages(v_SatelliteData=StationSat,v_StationData=Station,v_dtRefDateTime=dtRefDateTime)
                     jStationSatPassages = [jPassage for jPassage in SatPassages[1] if jPassage['Degress'] >= StMinDegree]
                     StFollows[StationSat['SatHash']][dtStrDateTime] = SatPassages[0]
 

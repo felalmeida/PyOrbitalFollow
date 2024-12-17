@@ -1,38 +1,38 @@
 {
-    "GrupoCriar_Industrial": {
-        "Id":           "GrupoCriar_Industrial",
-        "Name":         "Grupo CRIAR - Industrial",
+    "Location_001": {
+        "Id":           "Location_001",
+        "Name":         "Extremely Large Telescope (ELT)",
         "Enabled":      true,
-        "City":         "Ribeirão Preto",
-        "State":        "SP",
-        "Country":      "Brazil",
-        "TimeZone":     "America/Sao_Paulo",
-        "Latitude":     -21.09487,
-        "Longitude":    -47.79990,
-        "Altitude":     545
+        "City":         "Cerro armazones",
+        "State":        "Antofagasta",
+        "Country":      "Chile",
+        "TimeZone":     "America/Santiago",
+        "Latitude":     -24.5892248927864,
+        "Longitude":    -70.19195512883489,
+        "Altitude":     3059
     },
-    "GrupoCriar_Administrativo": {
-        "Id":           "GrupoCriar_Administrativo",
-        "Name":         "Grupo CRIAR - Administrativo",
+    "Location_002": {
+        "Id":           "Location_002",
+        "Name":         "Keck Telescopes",
         "Enabled":      true,
-        "City":         "Ribeirão Preto",
-        "State":        "SP",
-        "Country":      "Brazil",
-        "TimeZone":     "America/Sao_Paulo",
-        "Latitude":     -21.1749513,
-        "Longitude":    -47.7990129,
-        "Altitude":     545
+        "City":         "Mamalahoa",
+        "State":        "Hawaii",
+        "Country":      "United States",
+        "TimeZone":     "Pacific/Honolulu",
+        "Latitude":     20.02441032253105,
+        "Longitude":    -155.66550850674767,
+        "Altitude":     820
     },
-    "GrupoCriar_EdsonPereira": {
-        "Id":           "GrupoCriar_EdsonPereira",
-        "Name":         "Grupo CRIAR - Edson Pereira",
+    "Location_003": {
+        "Id":           "Location_003",
+        "Name":         "Hobby Eberly",
         "Enabled":      true,
-        "City":         "Pardinho",
-        "State":        "SP",
-        "Country":      "Brazil",
-        "TimeZone":     "America/Sao_Paulo",
-        "Latitude":     -23.106410,
-        "Longitude":    -48.379153,
-        "Altitude":     996
+        "City":         "Davis Mountains",
+        "State":        "Texas",
+        "Country":      "United States",
+        "TimeZone":     "US/Central",
+        "Latitude":     30.68154771029904,
+        "Longitude":    -104.01485211718366,
+        "Altitude":     2016
     }
 }

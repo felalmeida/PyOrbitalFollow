@@ -7,8 +7,19 @@
         "SatName": "ISS (ZARYA)",
         "EarthStation": "EarthST_001",
         "Priority": 10,
-        "Output_CSV": false,
-        "Output_JSON": false
+        "Output_CSV": true,
+        "Output_JSON": true
+    },
+    {
+        "Enabled": true,
+        "NORADCatalogNumber": 57167,
+        "TrackingStepMS": 100,
+        "WindowJumpSec": 3600,
+        "SatName": "STRATOSAT-TK 1 (RS52S)",
+        "EarthStation": "EarthST_001",
+        "Priority": 20,
+        "Output_CSV": true,
+        "Output_JSON": true
     },
     {
         "Enabled": false,

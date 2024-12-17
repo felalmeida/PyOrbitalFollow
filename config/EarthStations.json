@@ -3,8 +3,8 @@
         "Id":           "EarthST_001",
         "Name":         "Earth Station 001",
         "Enabled":      true,
-        "Location":     "GrupoCriar_Industrial",
-        "MinDegree":    10,
+        "Location":     "Location_001",
+        "MinDegree":    0,
         "Radios":       [
             {
                 "Id":           "EarthST_001|Radio_001",
@@ -48,8 +48,8 @@
         "Id":           "EarthST_002",
         "Name":         "Earth Station 002",
         "Enabled":      true,
-        "Location":     "GrupoCriar_Administrativo",
-        "MinDegree":    10,
+        "Location":     "Location_002",
+        "MinDegree":    0,
         "Radios":       [
             {
                 "Id":           "EarthST_002|Radio_001",
@@ -91,10 +91,10 @@
     },
     "EarthST_003": {
         "Id":           "EarthST_003",
-        "Name":         "Edson Pereira Station",
+        "Name":         "Earth Station 003",
         "Enabled":      true,
-        "Location":     "GrupoCriar_EdsonPereira",
-        "MinDegree":    10,
+        "Location":     "Location_003",
+        "MinDegree":    0,
         "Radios":       [
             {
                 "Id":           "EarthST_003|Radio_001",

@@ -323,8 +323,8 @@ def PrepareData(v_SaveFiles=False):
     for SatTLE in GetTLEs():
         SatTLEDoc = SatTLE.copy()
         SatTLEDoc['_id'] = SatTLE['Name']
-        SatTLEDoc['_insert_ts'] = int(datetime.datetime.utcnow().timestamp())
-        SatTLEDoc['_dt_insert'] = datetime.datetime.now().isoformat()
+        SatTLEDoc['_insert_ts'] = int(datetime.datetime.now(datetime.UTC).timestamp())
+        SatTLEDoc['_dt_insert'] = datetime.datetime.now(datetime.UTC).astimezone().isoformat()
         SatTLEDocArray.append(SatTLEDoc)
     if (SaveFiles):
         with open(FileTLEs,'w') as fFileTLEs:
@@ -335,8 +335,8 @@ def PrepareData(v_SaveFiles=False):
     for JE9PELIdx, JE9PELValue in ParseJE9PELContent(GetJE9PELWebsite()).items():
         SatJE9PELDoc = JE9PELValue.copy()
         SatJE9PELDoc['_id'] = SatJE9PELDoc['Satellite']
-        SatJE9PELDoc['_insert_ts'] = int(datetime.datetime.utcnow().timestamp())
-        SatJE9PELDoc['_dt_insert'] = datetime.datetime.now().isoformat()
+        SatJE9PELDoc['_insert_ts'] = int(datetime.datetime.now(datetime.UTC).timestamp())
+        SatJE9PELDoc['_dt_insert'] = datetime.datetime.now(datetime.UTC).astimezone().isoformat()
         SatJE9PELArray.append(SatJE9PELDoc)
     if (SaveFiles):
         with open(FileJE9PEL,'w') as fFileJE9PEL:
@@ -372,8 +372,8 @@ def PrepareData(v_SaveFiles=False):
                 'Tracking':     (SatNum in IdsTracking)
             }
             jTleData['_id'] = jTleData['SatHash']
-            jTleData['_insert_ts'] = int(datetime.datetime.utcnow().timestamp())
-            jTleData['_dt_insert'] = datetime.datetime.now().isoformat()
+            jTleData['_insert_ts'] = int(datetime.datetime.now(datetime.UTC).timestamp())
+            jTleData['_dt_insert'] = datetime.datetime.now(datetime.UTC).astimezone().isoformat()
             TrackingSatsCatalog.append(jTleData)
     # Remove Duplicates
     TrackingSatsCatalog = list({v['_id']:v for v in TrackingSatsCatalog}.values())
@@ -546,8 +546,8 @@ def CalcPassages(v_SatelliteData=None, v_StationData=None, v_dtRefDateTime=datet
                 'LongitudeArcSec':  lon.arcseconds()
             }
             jPositionData['_id'] = str(v_SatelliteData['SatHash'])+'_'+str(PassageSequence).zfill(10)
-            jPositionData['_insert_ts'] = int(datetime.datetime.utcnow().timestamp())
-            jPositionData['_dt_insert'] = datetime.datetime.now().isoformat()
+            jPositionData['_insert_ts'] = int(datetime.datetime.now(datetime.UTC).timestamp())
+            jPositionData['_dt_insert'] = datetime.datetime.now(datetime.UTC).astimezone().isoformat()
             SatPOSDocArray.append(jPositionData)
 
     # Sort Output

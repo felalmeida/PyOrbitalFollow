@@ -186,7 +186,7 @@ def GetJE9PELWebsite():
             fWebFile.write(WebContent)
 
     # First Interact
-    Bg = WebContent.find('The meaning of color for other satellites is similar.')
+    Bg = WebContent.find('Active (*)')
     WebContent = WebContent[Bg:]
     En = WebContent.find('#top')
     WebContent = WebContent[:En]
